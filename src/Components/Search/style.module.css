@@ -1,0 +1,38 @@
+.outerContainer{
+    margin-top: 50px;
+}
+
+.innerContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 auto;
+    width: 50%;
+    border:1px solid #E5E5E5;
+    padding: 10px;
+}
+
+.searchTitle{
+    color: #333333;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+}
+
+.inputs{
+   
+    align-items: center;
+    padding-top: 5px;
+}
+
+.input{
+    height: 20px;
+    font-size: 15px;
+}
+
+.inputButton{
+    font-size: 15px;
+    margin-left: 10px;
+    background-color: #C60E0D;
+    color: white;
+    border-radius: 5px;
+}
