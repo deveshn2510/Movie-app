@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
 import Style from './style.module.css';
+import Card from '../Card/card';
 const Search = () => {
 
     const [title, setTitle]=useState('')
     const [year, setYear]=useState('')
     const [type, setType]=useState('')
-
+    const [data, setData]=useState('')
     const handleSearch = () =>{
         console.log(title,year,type);
 
         fetch(`http://www.omdbapi.com/?s=${title}&y=${year}&type=${type}&apikey=dd2342c4`).then(res=>res.json()).then(
-            dataFetched => {console.log(dataFetched)}
+            dataFetched => {setData(dataFetched)}
         )
+        setTitle('');
+        setYear('');
+        setType('');
     }
 
 
-    return (<div className={Style.outerContainer}>
+    return (
+    
+    <div>
+        <div className={Style.outerContainer}>
         <div className={Style.innerContainer}>
             <div className={Style.searchTitle}>
                 Search
@@ -37,7 +44,11 @@ const Search = () => {
 
             </div>
         </div>
+    </div>
+   <Card data={data}/> 
+
     </div>)
+
 }
 
 export default Search;
