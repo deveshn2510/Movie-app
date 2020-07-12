@@ -10,7 +10,7 @@ const Search = () => {
     const handleSearch = () =>{
         console.log(title,year,type);
 
-        fetch(`http://www.omdbapi.com/?s=${title}&y=${year}&type=${type}&apikey=dd2342c4`).then(res=>res.json()).then(
+        fetch(`https://www.omdbapi.com/?s=${title}&y=${year}&type=${type}&apikey=dd2342c4`).then(res=>res.json()).then(
             dataFetched => {setData(dataFetched)}
         )
         setTitle('');

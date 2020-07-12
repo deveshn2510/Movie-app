@@ -9,7 +9,7 @@ const Fav = (props) => {
         console.log(ids);
         var apis = []
         for (var i = 0; i < ids.length; i++) {
-            apis.push(fetch(`http://www.omdbapi.com/?i=${ids[i]}&apikey=dd2342c4`));
+            apis.push(fetch(`https://www.omdbapi.com/?i=${ids[i]}&apikey=dd2342c4`));
         }
         console.log(apis);
         Promise.all(apis).then(function (responses) {
