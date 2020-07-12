@@ -1,7 +1,25 @@
-import React from 'react';
-import Style from './style.module.css'
+import React, { useEffect, useState } from 'react';
+import Style from './style.module.css';
 
-const Card = (props) => {
+const Fav = (props) => {
+    console.log(props)
+    const [data, setData]=useState('');
+    useEffect(() => {
+        var ids = JSON.parse(window.localStorage.getItem("ids"));
+        console.log(ids);
+        var apis = []
+        for (var i = 0; i < ids.length; i++) {
+            apis.push(fetch(`http://www.omdbapi.com/?i=${ids[i]}&apikey=dd2342c4`));
+        }
+        console.log(apis);
+        Promise.all(apis).then(function (responses) {
+            return Promise.all(responses.map(function (response) {
+                return response.json();
+            }));
+        }).then(fetchedData => {setData(fetchedData)
+        console.log(data)})
+    }, [])
+
     const handleFavourite = (id) => {
         console.log(id)
         var a = id;
@@ -27,20 +45,19 @@ const Card = (props) => {
 
 
     }
-    
 
-    const data = props.data
 
     if (data == '') {
         return (<div>
-        </div>)
-    } else if (data.Search != '') {
 
+        </div>)
+    } else if (data != '') {
+        console.log("kuch bhi")
         return (
             <div className={Style.render}>
                 {console.log(data)}
 
-                {data.Search.map(result => {
+                {data.map(result => {
                     return (
                         <div key={result.imdbID} className={Style.innerPost}>
 
@@ -51,7 +68,7 @@ const Card = (props) => {
 
                             <div className={Style.title}>
                                 <div><h3>{result.Title}</h3></div>
-                                <div onClick={() => handleFavourite(result.imdbID)}>
+                                <div onClick={()=>{handleFavourite(result.imdbID)}}>
                                     <img src='https://cdn4.iconfinder.com/data/icons/small-n-flat/24/heart-32.png'></img>
                                 </div>
                             </div>
@@ -68,4 +85,5 @@ const Card = (props) => {
     }
 }
 
-export default Card;
+
+export default Fav;

@@ -1,23 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Style from './style.module.css'
 import Search from '../Search/search';
+import Fav from '../Favorite/fav';
 
 const Header = () => {
-
-    const [src , setSrc]= useState('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-heart-outline-32.png')
+ 
+    
+    
+    
+    
     return (
-        <div className={Style.outerContainer}>
-            <div className={Style.innerContainer}>
-                <div className={Style.title}>
-                    THE MOVIE
+        <Router>
+            
+            
+                <div>
+
+                    <div className={Style.outerContainer}>
+                        <div className={Style.innerContainer}>
+                           <Link className={Style.link} to="/"><div className={Style.title}>
+                                THE MOVIE
+                        </div></Link> 
+                            <div >
+                                <Link to="/fav"><img src='https://cdn4.iconfinder.com/data/icons/small-n-flat/24/heart-32.png'></img></Link>
+                            </div>
+                        </div>
+                        <Switch>
+                        <Route path="/" exact component={Search}></Route>
+                        <Route path='/fav' exact component={Fav}></Route>
+                        </Switch>
+                        
+                    </div>
+
                 </div>
-                <div >
-                    <img src={src}></img>
-                    <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/heart-32.png"></img>
-                </div>
-            </div>
-            <Search/>
-        </div>
+            
+
+        </Router>
+
     )
 }
 
