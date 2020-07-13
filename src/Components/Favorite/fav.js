@@ -3,7 +3,7 @@ import Style from './style.module.css';
 
 const Fav = (props) => {
     console.log(props)
-    const [data, setData]=useState('');
+    const [data, setData] = useState('');
     useEffect(() => {
         var ids = JSON.parse(window.localStorage.getItem("ids"));
         console.log(ids);
@@ -16,8 +16,10 @@ const Fav = (props) => {
             return Promise.all(responses.map(function (response) {
                 return response.json();
             }));
-        }).then(fetchedData => {setData(fetchedData)
-        console.log(data)})
+        }).then(fetchedData => {
+            setData(fetchedData)
+            console.log(data)
+        })
     }, [])
 
     const handleFavourite = (id) => {
@@ -29,16 +31,20 @@ const Fav = (props) => {
                 var c = b.filter(result => result !== id);
                 b = c;
                 alert("Favorite Removed");
+                document.getElementById("heartImg").style.src = "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-heart-outline-32.png"
+                window.location.reload();
             } else {
                 b.push(a);
                 alert("Favorite Added");
+                document.getElementById("heartImg").style.src = "https://cdn4.iconfinder.com/data/icons/small-n-flat/24/heart-32.png"
             }
 
         }
         else {
             var b = [];
             b.push(a);
-            alert("Favorite Added")
+            alert("Favorite Added");
+            document.getElementById("heartImg").style.src = "https://cdn4.iconfinder.com/data/icons/small-n-flat/24/heart-32.png"
         }
         window.localStorage.setItem("ids", JSON.stringify(b));
 
@@ -48,8 +54,8 @@ const Fav = (props) => {
 
 
     if (data == '') {
-        return (<div>
-
+        return (<div className={Style.emptyFav}>
+            <h2>Nothing in the Favorite List</h2>
         </div>)
     } else if (data != '') {
         console.log("kuch bhi")
@@ -68,8 +74,8 @@ const Fav = (props) => {
 
                             <div className={Style.title}>
                                 <div><h3>{result.Title}</h3></div>
-                                <div onClick={()=>{handleFavourite(result.imdbID)}}>
-                                    <img src='https://cdn4.iconfinder.com/data/icons/small-n-flat/24/heart-32.png'></img>
+                                <div onClick={() => { handleFavourite(result.imdbID) }}>
+                                    <img id="heartImg" src='https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-heart-outline-32.png'></img>
                                 </div>
                             </div>
 

@@ -24,16 +24,14 @@ const Search = () => {
     <div>
         <div className={Style.outerContainer}>
         <div className={Style.innerContainer}>
-            <div className={Style.searchTitle}>
-                Search
-               <br></br>
-            </div>
+            
+            <div className={Style.line}></div>
             <div className={Style.inputs}>
-                <label>  Title: </label>
+                <label className={Style.label}>  Title: </label>
                 <input className={Style.input} value={title} onChange={e=>{setTitle(e.target.value)}}></input>
-                <label>  Year: </label>
+                <label className={Style.label}>  Year: </label>
                 <input className={Style.input} value={year} onChange={e=>{setYear(e.target.value)}}></input>
-                <label>  Type: </label>
+                <label className={Style.label}>  Type: </label>
                 <select className={Style.input} value={type} onChange={e=>{setType(e.target.value)}}>
                     <option value="" >All</option>
                     <option value="movie">Movie</option>

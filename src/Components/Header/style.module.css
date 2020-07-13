@@ -21,21 +21,15 @@
     text-decoration: none;
 }
 
+.logo{
+    height: 80px;
+}
+
 .title{
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     font-size: 30px;
     color: white;
-    padding: 10px;
+    
 }
 
-.title:hover{
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
-    font-size: 30px;
-    color:black;
-    background-color: #C60E0D ;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 25px;
-}

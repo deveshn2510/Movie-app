@@ -9,12 +9,15 @@
     width: 30%;
     border-radius: 5px;
     box-shadow: 2px 2px 5px black;
+    background-color: white;
 
 }
 .description{
     padding: 20px 30px 10px 10px
 }
-
+.emptyFav{
+    color: white;
+}
 .render{
     display: flex;
     flex-direction: column;
