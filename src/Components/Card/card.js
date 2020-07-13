@@ -72,7 +72,11 @@ const Card = (props) => {
                             </div>
 
                             <div className={Style.title}>
-                                <div><h3>{result.Title}</h3></div>
+                                <div>
+                                <div><h2>{result.Title}</h2></div>
+                                <div><h3>Year: {result.Year}</h3></div>
+                                
+                                </div>
                                 <div onClick={(event) => handleFavourite(result.imdbID, event)}>
                                     <img id={result.imdbID} src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-heart-outline-32.png"></img>
                                 </div>
