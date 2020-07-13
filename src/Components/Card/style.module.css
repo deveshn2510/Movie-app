@@ -23,7 +23,8 @@
 
 .render{
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
